@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Student Portal</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📒%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Tiro Bangla:wght@400;500;600;700&family=Tiro Bangla+2:wght@500;600;700&display=swap">
+<style>
+:root{--bg:#FFFFFF;--card:#F9F6EE;--bd:#E6DDC8;--fg:#3D3929;--mut:#8A8470;--ac:#BF5B3A;--ac2:#DD8A5E;--acf:#fff;--soft:#EFE8D8;--bad:#B53D2F;--ok:#4F7A4A;--bt:#2D5BE3;--btsoft:#EAF0FF;--btbd:#C5D4FA;--btf:#fff;--hf:"Baloo Da 2","Tiro Bangla",sans-serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:light){:root:not([data-theme="light"]){--bg:#1F1D19;--card:#2A2722;--bd:#403B31;--fg:#EDE7D8;--mut:#A39C89;--ac:#E08A68;--ac2:#C9704F;--acf:#2A1710;--soft:#34302A;--bad:#F08A78;--ok:#8FC48A;--bt:#8FAAFF;--btsoft:#2A3350;--btbd:#3E4A75;--btf:#101830}}
+:root[data-theme="dark"]{--bg:#1F1D19;--card:#2A2722;--bd:#403B31;--fg:#EDE7D8;--mut:#A39C89;--ac:#E08A68;--ac2:#C9704F;--acf:#2A1710;--soft:#34302A;--bad:#F08A78;--ok:#8FC48A;--bt:#8FAAFF;--btsoft:#2A3350;--btbd:#3E4A75;--btf:#101830}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:"Poppins","Tiro Bangla","Kalpurush",sans-serif;font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+main{max-width:1000px;margin:0 auto;padding:14px 14px 90px}
+header{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;padding:22px 22px;margin-bottom:16px;border-radius:20px;background:linear-gradient(135deg,var(--ac),var(--ac2));color:var(--acf);box-shadow:0 8px 22px rgba(191,91,58,.25)}header .sub{color:inherit;opacity:.88}
+h1{font-family:var(--hf);font-size:30px;font-weight:700;margin:0;letter-spacing:-.3px}.sub{color:var(--mut);font-size:14px}
+.today{background:rgba(255,255,255,.93);color:#363325;border-radius:20px;padding:5px 20px;font-size:15px;font-weight:1000}
+nav{display:flex;gap:6px;flex-wrap:wrap;border-bottom:2px solid var(--bd);padding-bottom:10px;margin-bottom:14px}
+nav button{border:1px solid transparent;background:transparent;color:var(--mut);padding:7px 16px;border-radius:20px}
+nav button:hover{background:var(--soft);color:var(--fg)}
+nav button.on{background:var(--bt);color:var(--btf);border-color:var(--bt);font-weight:600}
+h2{font-family:var(--hf);font-size:19px;font-weight:600;margin:0 0 12px}
+section{animation:fade .35s ease}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:16px;margin-bottom:14px;box-shadow:0 2px 10px rgba(90,70,40,.08);transition:transform .2s,box-shadow .2s}
+.sc:hover{transform:translateY(-3px);box-shadow:0 8px 18px rgba(80, 60, 20, 0.13)}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));margin-bottom:14px}
+.stat{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:12px 14px;border-top:4px solid var(--ac);box-shadow:0 2px 8px rgba(90,70,40,.06);transition:transform .2s}.stat:nth-child(5n+2){border-top-color:#5E8C6A}.stat:nth-child(5n+3){border-top-color:#C79A3B}.stat:nth-child(5n+4){border-top-color:#6B7FB8}.stat:nth-child(5n+5){border-top-color:#9A6BA8}
+.stat:hover{transform:translateY(-2px)}
+.stat small{color:var(--mut);display:block;font-size:13px}.stat b{font-family:var(--hf);font-size:22px;font-weight:600}
+button,input,select,textarea{font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--bd);border-radius:10px;padding:8px 12px;max-width:100%}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--ac);outline-offset:1px}
+button{cursor:pointer;color:var(--bt);background:var(--btsoft);border-color:var(--btbd);font-weight:500;transition:transform .15s,box-shadow .2s,background .2s,color .2s,border-color .2s,filter .2s}
+button:hover{transform:translateY(-2px);box-shadow:0 5px 12px rgba(60,45,15,.2)}
+button:active{transform:scale(.94);box-shadow:none}
+.btn{background:var(--bt);color:var(--btf);border-color:var(--bt);font-weight:600}.btn:hover{filter:brightness(1.12)}
+.dng{color:var(--bad);border-color:var(--bad)}
+.sm{padding:3px 10px;font-size:14px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:end;margin:8px 0}
+.fg{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+label{display:flex;flex-direction:column;font-size:13px;color:var(--mut);gap:3px}
+.chip{display:inline-block;background:var(--soft);border-left:4px solid var(--ac);padding:1px 8px;margin:2px;border-radius:5px;font-size:14px}
+.bad{color:var(--bad)}.ok{color:var(--ok)}.mut{color:var(--mut);font-size:14px}
+.nl{color:inherit;font-weight:600;text-decoration:underline dotted;text-underline-offset:3px;cursor:pointer;transition:color .2s}.nl:hover{color:var(--ac)}
+.sgrid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(290px,1fr))}
+.sc{border-left:5px solid var(--ac);margin:0}.sc h3{font-family:var(--hf);margin:0 0 2px;font-size:19px;font-weight:600}
+.cls{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:6px;border-left:5px solid var(--ac);background:var(--soft);border-radius:8px;padding:6px 10px;margin:6px 0}
+.cls .acts button{margin-left:3px}
+.acts button.on{background:var(--bt);color:var(--btf);border-color:var(--bt)}
+.acts button.on.m{background:var(--bad);border-color:var(--bad);color:#fff}
+.tag{font-size:12px;background:var(--bd);border-radius:4px;padding:0 6px;margin-left:4px}
+.prog{height:10px;background:var(--soft);border-radius:6px;overflow:hidden;margin:8px 0}.prog i{display:block;height:100%;background:var(--ok);transition:width .5s}
+.fr{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--bd)}
+.cal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.dh{text-align:center;font-size:13px;color:var(--mut);padding:3px 0}
+.cell{min-height:86px;background:var(--bg);border:1px solid var(--bd);border-radius:8px;padding:3px;cursor:pointer;overflow:hidden;transition:transform .15s,background .2s}
+.cell:hover{transform:scale(1.03);background:var(--soft)}
+.cell.empty{background:transparent;border:0;cursor:default}.cell.empty:hover{transform:none}
+.cell.t{border-color:var(--ac);border-width:2px}.cell.sel{background:var(--soft);outline:2px solid var(--ac)}
+.dn{font-size:13px;font-weight:600}
+.mini{font-size:11px;line-height:1.25;border-left:3px solid var(--ac);background:var(--soft);margin-top:2px;padding:0 3px;border-radius:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mini.cancel{text-decoration:line-through;opacity:.6}
+.mon{display:flex;gap:8px;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap}.mon b{font-family:var(--hf);font-size:19px;font-weight:600}
+textarea{width:100%;min-height:70px}
+.fab{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));height:54px;border-radius:30px;font-size:18px;font-weight:600;line-height:1;padding:0 24px;background:var(--bt);color:var(--btf);border:0;box-shadow:0 6px 16px rgba(0,0,0,.28);z-index:5;animation:pop .4s}
+.fab:hover{transform:translateY(-3px) scale(1.05);box-shadow:0 10px 24px rgba(0,0,0,.35)}
+.ov{position:fixed;inset:0;background:rgba(30,20,5,.5);display:flex;align-items:center;justify-content:center;padding:14px;z-index:10;animation:fi .2s}
+@keyframes fi{from{opacity:0}to{opacity:1}}
+@keyframes pop{from{transform:scale(.6);opacity:0}to{transform:none;opacity:1}}
+.md{width:100%;max-width:480px;max-height:92vh;overflow:auto;margin:0;animation:pop .28s cubic-bezier(.2,1.2,.4,1)}
+.tabs2{display:flex;gap:6px;margin-bottom:10px;align-items:center}.tabs2 .sp{flex:1}
+.tabs2 button.on{background:var(--bt);color:var(--btf);border-color:var(--bt)}
+.banner{background:var(--soft);border-left:5px solid var(--bad);border-radius:8px;padding:8px 12px;margin-bottom:10px}
+details>summary{cursor:pointer;list-style:none;font-family:var(--hf);font-size:19px;font-weight:600;color:var(--bt)}details>summary::-webkit-details-marker{display:none}details[open]>summary{margin-bottom:12px}
+[hidden]{display:none!important}
+@media(max-width:560px){.cell{min-height:62px}.mini{font-size:10px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div><h1>Student Portal</h1><div class="sub">টিউশন ম্যানেজমেন্ট — ফি, রুটিন ও ক্লাসের হিসাব</div></div>
+<div class="today" id="tdy"></div>
+</header>
+<nav id="nav">
+<button data-t="dash" class="on">📋 Dashboard</button>
+<button data-t="stu">🧑🏻‍🎓 Students</button>
+<button data-t="fee">💰 Fees</button>
+<button data-t="cal">📅 Calendar</button>
+</nav>
+
+<section id="dash">
+<div class="grid" id="dstats"></div>
+<div class="card"><h2>আজকের ক্লাস</h2><div id="dtoday"></div></div>
+<div class="card"><h2>এই মাসে ফি বাকি</h2><div id="ddue"></div></div>
+</section>
+
+<section id="stu" hidden>
+<div class="card">
+<details><summary>＋ New Student</summary>
+<div class="row">
+<label>Name<input id="nm" placeholder="নাম লিখুন"></label>
+<label>Monthly Fee (৳)<input id="fe" type="number" min="0" inputmode="numeric"></label>
+<label>Joining Date<input id="jd" type="date"></label>
+</div>
+<div class="row">
+<label>Day<select id="sd"></select></label>
+<label>Start Time<input id="ss" type="time"></label>
+<label>End Time<input id="se" type="time"></label>
+<button id="addslot" type="button">+ Add Time Slot</button>
+</div>
+<div id="slots" class="mut"></div>
+<div id="err" class="bad"></div>
+<div class="row"><button class="btn" id="save" type="button">Save</button></div></details>
+</div>
+<div class="row"><label>Search<input id="sq" placeholder="নাম খুঁজুন" oninput="renderSt()"></label><label>Show<select id="sf" onchange="renderSt()"><option value="a">Active</option><option value="e">Ended</option><option value="">All</option></select></label></div>
+<div class="sgrid" id="slist"></div>
+</section>
+
+<section id="fee" hidden>
+<div class="card">
+<div class="mon"><button onclick="fmNav(-1)">◀ Prev</button><b id="fmt"></b><button onclick="fmNav(1)">Next ▶</button></div>
+<div class="row"><label>Search<input id="fq" placeholder="নাম খুঁজুন"></label><label>Filter<select id="ff"><option value="">All</option><option value="p">Paid</option><option value="d">Due</option></select></label><button onclick="copyDue()">Copy Due List</button></div>
+<div class="prog"><i id="fbar"></i></div>
+<div id="fsum"></div>
+<div id="frows"></div>
+<textarea id="duetxt" hidden readonly></textarea>
+</div>
+</section>
+
+<section id="cal" hidden>
+<div class="card">
+<div class="mon"><button onclick="calNav(-1)">◀ Prev</button><b id="cmt"></b><button onclick="calNav(1)">Next ▶</button><button onclick="calToday()">Today</button></div>
+<div class="cal" id="cg"></div>
+<p class="mut">যেকোনো তারিখে ক্লিক করলে নিচে সেই দিনের ক্লাস দেখা যাবে — সেখানেই Done / Missed / Cancel চিহ্ন দিন বা Extra ক্লাস যোগ করুন।</p>
+</div>
+<div class="card" id="dp"></div>
+</section>
+
+<section id="prof" hidden></section>
+</main>
+
+<button class="fab" id="fab" title="Add" onclick="openM(1)">＋ Add</button>
+
+<div class="ov" id="ov" hidden onclick="if(event.target===this)closeM()">
+<div class="card md">
+<div class="tabs2"><button id="mt1" class="on" onclick="mtab(1)">Class Update</button><button id="mt2" onclick="mtab(2)">New Student</button><span class="sp"></span><button class="sm" onclick="closeM()">✕</button></div>
+<div id="m1">
+<div class="mut" style="margin-bottom:6px">পুরোনো বা যেকোনো ছাত্র/ছাত্রীর ক্লাসের তারিখ ও সময় যোগ করুন।</div>
+<div class="fg">
+<label>Student<select id="m_s"></select></label>
+<label>Date<input id="m_d" type="date"></label>
+<label>Start Time<input id="m_a" type="time"></label>
+<label>End Time<input id="m_b" type="time"></label>
+<label>Status<select id="m_t"><option value="done">Done</option><option value="">Scheduled</option><option value="missed">Missed</option></select></label>
+</div>
+<div class="row"><button class="btn" onclick="addClass()">Add Class</button></div>
+</div>
+<div id="m2" hidden>
+<div class="mut" style="margin-bottom:6px">আগে নাম, ফি ও যোগদানের তারিখ দিন। বাকি তথ্য প্রোফাইলে দিতে পারবেন।</div>
+<div class="fg">
+<label>Name<input id="n_n" placeholder="নাম লিখুন"></label>
+<label>Monthly Fee (৳)<input id="n_f" type="number" min="0" inputmode="numeric"></label>
+<label>Joining Date<input id="n_j" type="date"></label>
+</div>
+<div class="row"><button class="btn" onclick="newStu()">Save &amp; Open Profile</button></div>
+</div>
+<div id="merr" class="bad"></div>
+</div>
+</div>
+
+<script>
+var DAYS=["রবিবার","সোমবার","মঙ্গলবার","বুধবার","বৃহস্পতিবার","শুক্রবার","শনিবার"];
+var SH=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+var COL=["#BF5B3A","#5E8C6A","#6B7FB8","#C79A3B","#9A6BA8","#3F8F9B","#D0728A","#7A8F3F"];
+var K2="tutor_portal_v2",S={students:[],logs:{},extras:[]},pend=[],curTab="dash",prevTab="stu",profId=null;
+var $=function(i){return document.getElementById(i)};
+function bn(x){return String(x).replace(/\d/g,function(d){return"০১২৩৪৫৬৭৮৯"[d]})}
+function esc(t){return String(t==null?"":t).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
+function iso(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+function pd(s){var p=s.split("-");return new Date(+p[0],+p[1]-1,+p[2])}
+function today(){var d=new Date();return new Date(d.getFullYear(),d.getMonth(),d.getDate())}
+function fd(s){if(!s)return"—";var p=s.split("-");return bn(p[2]+"/"+p[1]+"/"+p[0])}
+function mname(y,m){return new Date(y,m,1).toLocaleDateString("bn-BD",{month:"long",year:"numeric"})}
+function mkey(y,m){return y+"-"+String(m+1).padStart(2,"0")}
+function byId(id){return S.students.filter(function(s){return s.id===id})[0]}
+function over(a,b){return a.d==b.d&&a.s<b.e&&b.s<a.e}
+function slotTxt(x){return DAYS[x.d]+" "+bn(x.s)+"–"+bn(x.e)}
+function active(s,d){return s.join&&pd(s.join)<=d&&(!s.end||pd(s.end)>=d)}
+function load(){
+  try{var r=localStorage.getItem(K2)||localStorage.getItem("tutor_portal_v1");if(r){var o=JSON.parse(r);S.students=o.students||[];S.logs=o.logs||{};S.extras=o.extras||[]}}catch(e){}
+  S.students.forEach(function(s,i){if(s.c==null)s.c=i%8;s.paid=s.paid||{}});
+}
+function store(){try{localStorage.setItem(K2,JSON.stringify(S))}catch(e){}}
+function nl(s){return'<a class="nl" onclick="openStudent('+s.id+')">'+esc(s.name)+"</a>"}
+
+/* classes of a date */
+function classesOn(d){
+  var ds=iso(d),out=[];
+  S.students.forEach(function(s){if(active(s,d))s.slots.forEach(function(x){if(x.d===d.getDay()){var k=ds+"|"+s.id+"|"+x.s;out.push({k:k,s:s,st:x.s,e:x.e,x:0,status:S.logs[k]||""})}})});
+  S.extras.forEach(function(z){if(z.date===ds){var s=byId(z.sid);if(s){var k=ds+"|"+s.id+"|x"+z.id;out.push({k:k,s:s,st:z.s,e:z.e,x:z.id,status:S.logs[k]||""})}}});
+  out.sort(function(a,b){return a.st<b.st?-1:a.st>b.st?1:0});
+  return out;
+}
+function rowHtml(c){
+  var b=function(v,l,m){return'<button class="sm '+(c.status===v?"on ":"")+(m||"")+'" onclick="mark(\''+c.k+"','"+v+"')\">"+l+"</button>"};
+  return'<div class="cls" style="border-left-color:'+COL[c.s.c%8]+'"><div><b>'+bn(c.st)+"–"+bn(c.e)+"</b> "+nl(c.s)+(c.x?' <span class="tag">Extra</span>':"")+'</div><div class="acts">'+b("done","Done")+b("missed","Missed","m")+b("cancel","Cancel")+(c.x?'<button class="sm" onclick="rmExtra('+c.x+')">Remove</button>':"")+"</div></div>";
+}
+function mark(k,v){if(S.logs[k]===v)delete S.logs[k];else S.logs[k]=v;store();renderAll()}
+function rmExtra(id){S.extras=S.extras.filter(function(z){return z.id!==id});Object.keys(S.logs).forEach(function(k){if(k.split("|")[2]==="x"+id)delete S.logs[k]});store();renderAll()}
+function conflict(slot,skip){
+  for(var i=0;i<S.students.length;i++){var s=S.students[i];if(s.id===skip)continue;for(var k=0;k<s.slots.length;k++)if(over(slot,s.slots[k]))return s.name+" ("+slotTxt(s.slots[k])+")"}
+  return null;
+}
+function slotOk(x,own,skip){
+  if(!x.s||!x.e)return"শুরু ও শেষের সময় দিন।";
+  if(x.s>=x.e)return"শেষের সময় শুরুর পরে হতে হবে।";
+  for(var i=0;i<own.length;i++)if(over(x,own[i]))return"এই সময় আগের যোগ করা সময়ের সাথে মিলে গেছে।";
+  var c=conflict(x,skip);
+  return c?"সময় মিলে যাচ্ছে: "+c+" এর সাথে। অন্য সময় বাছাই করুন।":"";
+}
+
+/* stats */
+function ov(s){
+  var t=today(),j=s.join?pd(s.join):t,e=s.end?pd(s.end):null,last=e||t,to=e&&e<t?e:t;
+  var o={total:0,sched:0,held:0,missed:0,canc:0,extra:0,months:0,mpaid:0,fee:0,paid:0};
+  if(j<=last)o.total=Math.round((last-j)/864e5)+1;
+  if(j<=to)for(var d=new Date(j);d<=to;d.setDate(d.getDate()+1))s.slots.forEach(function(x){if(x.d===d.getDay())o.sched++});
+  Object.keys(S.logs).forEach(function(k){var p=k.split("|");if(+p[1]===s.id){var v=S.logs[k];if(v==="done")o.held++;else if(v==="missed")o.missed++;else if(v==="cancel")o.canc++}});
+  o.extra=S.extras.filter(function(z){return z.sid===s.id}).length;
+  o.ms=monthsOf(s);o.months=o.ms.length;
+  o.ms.forEach(function(m){o.fee+=s.fee;if(s.paid[m.k]){o.paid+=s.fee;o.mpaid++}});
+  return o;
+}
+function monthsOf(s){
+  var r=[];if(!s.join)return r;var j=pd(s.join),t=today(),last=s.end?pd(s.end):t;
+  var y=j.getFullYear(),m=j.getMonth();
+  while(y<last.getFullYear()||(y===last.getFullYear()&&m<=last.getMonth())){r.push({y:y,m:m,k:mkey(y,m)});m++;if(m>11){m=0;y++}}
+  return r;
+}
+
+/* Students tab */
+function renderSt(){
+  var f=$("sf").value,t=today(),q=$("sq").value.trim().toLowerCase();
+  var L=S.students.filter(function(s){var en=s.end&&pd(s.end)<t;return(f===""||(f==="a"?!en:en))&&(!q||s.name.toLowerCase().indexOf(q)>-1)});
+  $("slist").innerHTML=L.length?L.map(function(s){
+    var o=ov(s),en=s.end?(pd(s.end)<today()?"Ended":"Leaving"):"";
+    return'<div class="card sc" style="border-left-color:'+COL[s.c%8]+'"><h3>'+nl(s)+(en?' <span class="tag">'+en+"</span>":"")+'</h3><div class="mut">Fee: '+bn(s.fee)+" ৳/মাস · Joined: "+fd(s.join)+(s.end?" · End: "+fd(s.end):"")+"</div><div>"+(s.slots.map(function(x){return'<span class="chip" style="border-left-color:'+COL[s.c%8]+'">'+slotTxt(x)+"</span>"}).join("")||'<span class="mut">কোনো সময় নেই</span>')+'</div><div style="margin:8px 0;font-size:14px">'+bn(o.total)+" দিন · Held <b class='ok'>"+bn(o.held)+"</b> · Missed <b class='bad'>"+bn(o.missed)+'</b></div><button class="sm" onclick="openStudent('+s.id+')">Open Profile</button></div>';
+  }).join(""):'<div class="card mut">এই তালিকায় কেউ নেই।</div>';
+}
+function renderSlots(){$("slots").innerHTML=pend.length?pend.map(function(x,i){return'<span class="chip">'+slotTxt(x)+' <a href="#" onclick="rmSlot('+i+');return false">✕</a></span>'}).join(""):"কোনো সময় যোগ করা হয়নি"}
+function rmSlot(i){pend.splice(i,1);renderSlots()}
+$("addslot").onclick=function(){
+  var x={d:+$("sd").value,s:$("ss").value,e:$("se").value},m=slotOk(x,pend,null);
+  if(m){$("err").textContent=m;return}
+  pend.push(x);$("err").textContent="";renderSlots();
+};
+function addStu(n,f,j,slots){
+  var o={id:Date.now(),name:n,fee:+f||0,join:j,end:"",slots:slots||[],paid:{},c:S.students.length%8};
+  S.students.push(o);store();return o;
+}
+$("save").onclick=function(){
+  var n=$("nm").value.trim();
+  if(!n){$("err").textContent="নাম দিন।";return}
+  if(!$("jd").value){$("err").textContent="Joining Date দিন।";return}
+  var o=addStu(n,$("fe").value,$("jd").value,pend.slice());
+  pend=[];["nm","fe","jd","ss","se"].forEach(function(i){$(i).value=""});$("err").textContent="";renderSlots();renderAll();openStudent(o.id);
+};
+
+/* Profile */
+function openStudent(id){
+  if(curTab!=="prof")prevTab=curTab;
+  profId=id;renderProf();showTab("prof");window.scrollTo(0,0);
+}
+function fld(id,l,v,t){return'<label>'+l+'<input id="'+id+'" type="'+(t||"text")+'" value="'+esc(v)+'"></label>'}
+function renderProf(){
+  var s=profId&&byId(profId),P=$("prof");
+  if(!s){P.innerHTML="";return}
+  var o=ov(s),en=!!s.end,c=COL[s.c%8],h="";
+  h+='<div class="row"><button onclick="showTab(prevTab)">← Back</button></div>';
+  h+='<div class="card" style="border-left:6px solid '+c+'"><h2 style="font-size:22px;margin:0">'+esc(s.name)+(en?' <span class="tag">'+(pd(s.end)<today()?"Ended":"Leaving")+"</span>":' <span class="tag">Active</span>')+'</h2><div class="mut">Joined: '+fd(s.join)+(en?" · End: "+fd(s.end):"")+"</div></div>";
+  h+='<div class="card"><h2>Details</h2><div class="fg">'+fld("p_n","Name",s.name)+fld("p_f","Monthly Fee (৳)",s.fee,"number")+fld("p_j","Joining Date",s.join,"date")+fld("p_ph","Phone",s.phone,"tel")+fld("p_g","Guardian Name",s.gname)+fld("p_gp","Guardian Phone",s.gphone,"tel")+fld("p_sc","Class / School",s.school)+fld("p_su","Subject",s.subject)+fld("p_ad","Address",s.addr)+'</div><label style="margin-top:10px">Notes<textarea id="p_nt">'+esc(s.note)+'</textarea></label><div id="p_er" class="bad"></div><div class="row"><button class="btn" onclick="saveProf()">Save</button></div></div>';
+  h+='<div class="card"><h2>Weekly Routine</h2><div>'+(s.slots.map(function(x,i){return'<span class="chip" style="border-left-color:'+c+'">'+slotTxt(x)+' <a href="#" onclick="pSlotDel('+i+');return false">✕</a></span>'}).join("")||'<span class="mut">কোনো সময় নেই</span>')+'</div><div class="row"><label>Day<select id="ps_d">'+DAYS.map(function(d,i){return'<option value="'+i+'">'+d+"</option>"}).join("")+'</select></label><label>Start Time<input id="ps_s" type="time"></label><label>End Time<input id="ps_e" type="time"></label><button onclick="pSlotAdd()">+ Add Time Slot</button></div><div id="ps_er" class="bad"></div></div>';
+  h+='<div class="card"><h2>Status &amp; End Date</h2>'+(en?'<div class="banner">শেষ তারিখ: <b>'+fd(s.end)+'</b>। নিচে পুরো Overview দেখুন।</div><button class="dng" onclick="endClear()">Re-open (remove End Date)</button>':'<div class="mut" style="margin-bottom:6px">ছাত্র/ছাত্রী ছেড়ে দিলে এখানে শেষ তারিখ দিন। তারপর পুরো Overview দেখা যাবে।</div><div class="row"><label>End Date<input id="p_end" type="date" value="'+iso(today())+'"></label><button class="dng" onclick="endSave()">Save End Date</button></div><div id="pe_er" class="bad"></div>')+'</div>';
+  var st=function(l,v){return'<div class="stat"><small>'+l+"</small><b>"+v+"</b></div>"};
+  h+='<div class="card" id="ovw"><h2>Overview'+(en?" (Final)":"")+'</h2><div class="grid">'+st("Joined",fd(s.join))+st(en?"Ended":"Today",fd(en?s.end:iso(today())))+st("Total Duration",bn(o.total)+" দিন")+st("Months",bn(o.months)+" মাস")+st("Scheduled Classes",bn(o.sched))+st("Classes Held",bn(o.held))+st("Missed",bn(o.missed))+st("Cancelled",bn(o.canc))+st("Extra Classes",bn(o.extra))+st("Total Fee",bn(o.fee)+" ৳")+st("Paid",bn(o.paid)+" ৳")+st("Due",bn(o.fee-o.paid)+" ৳")+"</div></div>";
+  h+='<div class="card"><h2>Fee History</h2>'+(o.ms.slice().reverse().map(function(m){var p=!!s.paid[m.k];return'<div class="fr"><div><b>'+mname(m.y,m.m)+'</b> <span class="mut">'+bn(s.fee)+' ৳</span></div><div><span class="'+(p?"ok":"bad")+'">'+(p?"Paid"+(s.paid[m.k]!==true?" · "+fd(s.paid[m.k]):""):"Due")+'</span> <button class="sm" onclick="payM('+s.id+",'"+m.k+"')\">"+(p?"Mark Due":"Mark Paid")+"</button></div></div>"}).join("")||'<div class="mut">এখনো কোনো মাস হয়নি।</div>')+"</div>";
+  var lg=Object.keys(S.logs).filter(function(k){return+k.split("|")[1]===s.id}).sort().reverse().slice(0,60);
+  h+='<div class="card"><h2>Class Log</h2>'+(lg.map(function(k){
+    var p=k.split("|"),tg=p[2],tm="";
+    if(tg[0]==="x"){var z=S.extras.filter(function(q){return"x"+q.id===tg})[0];tm=z?bn(z.s)+"–"+bn(z.e)+" (Extra)":"Extra"}
+    else{var sl=s.slots.filter(function(q){return q.s===tg})[0];tm=bn(tg)+(sl?"–"+bn(sl.e):"")}
+    var v=S.logs[k];return'<div class="fr"><div>'+fd(p[0])+' <span class="mut">'+tm+'</span></div><span class="'+(v==="done"?"ok":v==="missed"?"bad":"mut")+'">'+(v==="done"?"Done":v==="missed"?"Missed":"Cancelled")+"</span></div>"
+  }).join("")||'<div class="mut">এখনো কোনো ক্লাসে Done/Missed/Cancel চিহ্ন দেওয়া হয়নি।</div>')+"</div>";
+  h+='<div class="row"><button class="dng" onclick="del('+s.id+')">Delete Student</button></div>';
+  P.innerHTML=h;
+}
+function saveProf(){
+  var s=byId(profId),v=function(i){return $(i).value.trim()};
+  if(!v("p_n")){$("p_er").textContent="নাম দিন।";return}
+  if(!$("p_j").value){$("p_er").textContent="Joining Date দিন।";return}
+  if(s.end&&s.end<$("p_j").value){$("p_er").textContent="Joining Date শেষ তারিখের আগে হতে হবে।";return}
+  s.name=v("p_n");s.fee=+$("p_f").value||0;s.join=$("p_j").value;s.phone=v("p_ph");s.gname=v("p_g");s.gphone=v("p_gp");s.school=v("p_sc");s.subject=v("p_su");s.addr=v("p_ad");s.note=$("p_nt").value.trim();
+  store();renderAll();
+}
+function pSlotAdd(){
+  var s=byId(profId),x={d:+$("ps_d").value,s:$("ps_s").value,e:$("ps_e").value},m=slotOk(x,s.slots,s.id);
+  if(m){$("ps_er").textContent=m;return}
+  s.slots.push(x);store();renderAll();
+}
+function pSlotDel(i){byId(profId).slots.splice(i,1);store();renderAll()}
+function endSave(){
+  var s=byId(profId),v=$("p_end").value;
+  if(!v){$("pe_er").textContent="End Date দিন।";return}
+  if(v<s.join){$("pe_er").textContent="শেষ তারিখ যোগদানের আগে হতে পারে না।";return}
+  s.end=v;store();renderAll();var e=$("ovw");if(e)e.scrollIntoView({behavior:"smooth"});
+}
+function endClear(){if(confirm("End Date মুছে আবার Active করবেন?")){byId(profId).end="";store();renderAll()}}
+function payM(id,k){var s=byId(id);if(s.paid[k])delete s.paid[k];else s.paid[k]=iso(today());store();renderAll()}
+function del(id){if(confirm("সত্যিই মুছে ফেলবেন? সব ডেটা চলে যাবে।")){S.students=S.students.filter(function(z){return z.id!==id});S.extras=S.extras.filter(function(z){return z.sid!==id});Object.keys(S.logs).forEach(function(k){if(+k.split("|")[1]===id)delete S.logs[k]});store();profId=null;showTab("stu");renderAll()}}
+
+/* Fees */
+var fy=today().getFullYear(),fmn=today().getMonth();
+function inMonth(y,m){var a=new Date(y,m,1),b=new Date(y,m+1,0);return S.students.filter(function(s){return s.join&&pd(s.join)<=b&&(!s.end||pd(s.end)>=a)})}
+function fmNav(n){fmn+=n;if(fmn<0){fmn=11;fy--}if(fmn>11){fmn=0;fy++}renderFee()}
+function renderFee(){
+  var m=mkey(fy,fmn),L=inMonth(fy,fmn),tot=0,got=0,q=$("fq").value.trim().toLowerCase(),f=$("ff").value;
+  $("fmt").textContent=mname(fy,fmn);
+  L.forEach(function(s){tot+=s.fee;if(s.paid[m])got+=s.fee});
+  var v=L.filter(function(s){return(!q||s.name.toLowerCase().indexOf(q)>-1)&&(!f||(f==="p")===!!s.paid[m])});
+  $("frows").innerHTML=v.length?v.map(function(s){var p=!!s.paid[m];return'<div class="fr"><div>'+nl(s)+'<br><span class="mut">'+bn(s.fee)+' ৳</span></div><div><span class="'+(p?"ok":"bad")+'">'+(p?"Paid":"Due")+'</span> <button class="sm" onclick="pay('+s.id+')">'+(p?"Mark Due":"Mark Paid")+"</button></div></div>"}).join(""):'<div class="mut">এই মাসে কেউ নেই</div>';
+  $("fsum").innerHTML="Total: <b>"+bn(tot)+" ৳</b> · Collected: <b class='ok'>"+bn(got)+" ৳</b> · Due: <b class='bad'>"+bn(tot-got)+" ৳</b>";
+  $("fbar").style.width=(tot?got*100/tot:0)+"%";
+}
+function pay(id){payM(id,mkey(fy,fmn))}
+function copyDue(){
+  var m=mkey(fy,fmn),t="ফি বাকি — "+mname(fy,fmn)+"\n";
+  inMonth(fy,fmn).forEach(function(s){if(!s.paid[m])t+=s.name+": "+s.fee+" ৳\n"});
+  var a=$("duetxt");a.value=t;a.hidden=false;a.select();
+  try{navigator.clipboard.writeText(t)}catch(e){}
+}
+$("fq").oninput=renderFee;$("ff").onchange=renderFee;
+
+/* Calendar */
+var cy=today().getFullYear(),cm=today().getMonth(),sel=iso(today());
+function calNav(n){cm+=n;if(cm<0){cm=11;cy--}if(cm>11){cm=0;cy++}renderCal()}
+function calToday(){var t=today();cy=t.getFullYear();cm=t.getMonth();sel=iso(t);renderCal()}
+function pick(d){sel=d;renderCal()}
+function renderCal(){
+  $("cmt").textContent=mname(cy,cm);
+  var h=SH.map(function(d){return'<div class="dh">'+d+"</div>"}).join(""),first=new Date(cy,cm,1).getDay(),n=new Date(cy,cm+1,0).getDate(),ts=iso(today());
+  for(var i=0;i<first;i++)h+='<div class="cell empty"></div>';
+  for(var d=1;d<=n;d++){
+    var dt=new Date(cy,cm,d),ds=iso(dt),L=classesOn(dt);
+    h+='<div class="cell'+(ds===ts?" t":"")+(ds===sel?" sel":"")+'" onclick="pick(\''+ds+'\')"><div class="dn">'+bn(d)+"</div>"+L.slice(0,3).map(function(c){var ic=c.status==="done"?"✓ ":c.status==="missed"?"✗ ":"";return'<div class="mini'+(c.status==="cancel"?" cancel":"")+'" style="border-left-color:'+COL[c.s.c%8]+'">'+ic+esc(c.s.name)+"</div>"}).join("")+(L.length>3?'<div class="mini">+'+bn(L.length-3)+" আরও</div>":"")+"</div>";
+  }
+  $("cg").innerHTML=h;
+  var d0=pd(sel),L2=classesOn(d0);
+  $("dp").innerHTML="<h2>"+DAYS[d0.getDay()]+", "+fd(sel)+"</h2>"+(L2.map(rowHtml).join("")||'<div class="mut">এই দিনে কোনো ক্লাস নেই।</div>')+
+  '<h2 style="margin-top:14px">Extra Class যোগ করুন (এই তারিখে)</h2><div class="row"><label>Student<select id="exs">'+S.students.map(function(s){return'<option value="'+s.id+'">'+esc(s.name)+"</option>"}).join("")+'</select></label><label>Start Time<input id="exst" type="time"></label><label>End Time<input id="exe" type="time"></label><button class="btn" onclick="addExtra()">Add</button></div><div id="exerr" class="bad"></div>';
+}
+function putExtra(sid,date,a,b,status){
+  var id=Date.now();S.extras.push({id:id,date:date,sid:sid,s:a,e:b});
+  if(status)S.logs[date+"|"+sid+"|x"+id]=status;store();
+}
+function clash(date,a,b){return classesOn(pd(date)).filter(function(x){return x.status!=="cancel"&&x.st<b&&a<x.e})[0]}
+function addExtra(){
+  var sid=+$("exs").value,a=$("exst").value,b=$("exe").value,er=$("exerr");
+  if(!sid){er.textContent="আগে একজন ছাত্র/ছাত্রী যোগ করুন।";return}
+  if(!a||!b||a>=b){er.textContent="সঠিক শুরু ও শেষের সময় দিন।";return}
+  var c=clash(sel,a,b);
+  if(c){er.textContent="সময় মিলে যাচ্ছে: "+c.s.name+" ("+bn(c.st)+"–"+bn(c.e)+") এর সাথে।";return}
+  putExtra(sid,sel,a,b,"");renderAll();
+}
+
+/* Dashboard */
+function renderDash(){
+  var t=today(),m=mkey(t.getFullYear(),t.getMonth()),L=inMonth(t.getFullYear(),t.getMonth()),tot=0,got=0,td=classesOn(t);
+  L.forEach(function(s){tot+=s.fee;if(s.paid[m])got+=s.fee});
+  var act=S.students.filter(function(s){return active(s,t)}).length;
+  var c=function(l,v){return'<div class="stat"><small>'+l+"</small><b>"+v+"</b></div>"};
+  $("dstats").innerHTML=c("Active Students",bn(act))+c("Today's Classes",bn(td.filter(function(x){return x.status!=="cancel"}).length))+c("Collected",bn(got)+" ৳")+c("Due",bn(tot-got)+" ৳");
+  $("dtoday").innerHTML=td.map(rowHtml).join("")||'<div class="mut">আজ কোনো ক্লাস নেই।</div>';
+  var due=L.filter(function(s){return!s.paid[m]});
+  $("ddue").innerHTML=due.length?due.map(function(s){return'<span class="chip">'+nl(s)+" · "+bn(s.fee)+" ৳</span>"}).join(""):'<div class="mut ok">এই মাসে সবার ফি পরিশোধিত বা কেউ নেই।</div>';
+}
+
+/* Quick add modal */
+function openM(n){
+  $("m_s").innerHTML=S.students.map(function(s){return'<option value="'+s.id+'">'+esc(s.name)+"</option>"}).join("");
+  $("m_d").value=iso(today());$("merr").textContent="";mtab(S.students.length?n:2);$("ov").hidden=false;
+}
+function closeM(){$("ov").hidden=true}
+function mtab(n){$("m1").hidden=n!==1;$("m2").hidden=n!==2;$("mt1").classList.toggle("on",n===1);$("mt2").classList.toggle("on",n===2);$("merr").textContent=""}
+function addClass(){
+  var sid=+$("m_s").value,d=$("m_d").value,a=$("m_a").value,b=$("m_b").value,er=$("merr");
+  if(!sid){er.textContent="আগে একজন ছাত্র/ছাত্রী যোগ করুন (New Student ট্যাব)।";return}
+  if(!d){er.textContent="Date দিন।";return}
+  if(!a||!b||a>=b){er.textContent="সঠিক শুরু ও শেষের সময় দিন।";return}
+  var c=clash(d,a,b);
+  if(c){er.textContent="সময় মিলে যাচ্ছে: "+c.s.name+" ("+bn(c.st)+"–"+bn(c.e)+")। নির্ধারিত রুটিনের ক্লাস হলে আজকের ক্লাস তালিকা বা Calendar থেকে Done দিন।";return}
+  putExtra(sid,d,a,b,$("m_t").value);$("m_a").value="";$("m_b").value="";
+  var dt=pd(d);cy=dt.getFullYear();cm=dt.getMonth();sel=d;closeM();renderAll();
+}
+function newStu(){
+  var n=$("n_n").value.trim(),er=$("merr");
+  if(!n){er.textContent="নাম দিন।";return}
+  if(!$("n_j").value){er.textContent="Joining Date দিন।";return}
+  var o=addStu(n,$("n_f").value,$("n_j").value,[]);
+  ["n_n","n_f","n_j"].forEach(function(i){$(i).value=""});closeM();renderAll();openStudent(o.id);
+}
+
+function showTab(t){
+  curTab=t;
+  ["dash","stu","fee","cal","prof"].forEach(function(i){$(i).hidden=i!==t});
+  document.querySelectorAll("#nav button").forEach(function(x){x.classList.toggle("on",x.dataset.t===t)});
+  $("fab").hidden=t!=="dash";
+}
+function renderAll(){renderDash();renderSt();renderFee();renderCal();renderProf()}
+document.querySelectorAll("#nav button").forEach(function(b){b.onclick=function(){showTab(b.dataset.t)}});
+$("sd").innerHTML=DAYS.map(function(d,i){return'<option value="'+i+'">'+d+"</option>"}).join("");
+$("tdy").textContent=DAYS[today().getDay()]+", "+fd(iso(today()));
+load();renderSlots();renderAll();showTab("dash");
+</script>
+</body>
+</html>
